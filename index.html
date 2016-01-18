@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello React</title>
+</head>
+<body>
+	<div id="example"></div>
+	<script src="https://fb.me/react-0.14.3.js"></script>
+    <script src="https://fb.me/react-dom-0.14.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script type="text/babel">
+
+		// var HelloWorld = React.createClass({
+		// 	render: function() {
+		// 		return (
+		// 			<div>
+		// 				<label>Type your name:</label>
+		// 				<input type="text" placeholder="Your name here" value=inputValue />
+		// 				<p>
+		// 					Hello, {this.props.inputValue}!
+		// 					It is {this.props.date.toString()}
+		// 				</p>
+		// 			</div>
+		// 		);
+		// 	}
+		// });
+
+		// setInterval(function() {
+		// 	ReactDOM.render(
+		// 		<HelloWorld date={new Date()} />,
+		// 		document.getElementById('example')
+		// 	);
+		// }, 500);
+
+		// var LikeButton = React.createClass({
+
+		// 	getInitialState: function() {
+		// 		return {liked: false,
+		// 				clickTotal: 0};
+		// 	},
+		// 	handleClick: function(event) {
+		// 		this.setState({liked: !this.state.liked, clickTotal: this.state.clickTotal+=1});
+		// 	},
+		// 	render: function() {
+		// 		var text = this.state.liked ? 'like' : 'haven\'t liked';
+		// 		return (
+		// 			<div>
+		// 				<button onClick={this.handleClick}>
+		// 					You {text} this. Click to toggle.
+		// 				</button>
+		// 				<p>You have clicked {this.state.clickTotal} times!</p>
+		// 			</div>
+		// 		);
+		// 	}
+		// });
+
+		// ReactDOM.render(
+		// 	<LikeButton props />,
+		// 	document.getElementById('example')
+		// );
+
+		// var Avatar = React.createClass({
+		// 	render: function() {
+		// 		const list = [1,2,3,4,5]
+		// 		return (
+		// 			<div>
+		// 				<ProfilePic username={this.props.username} />
+		// 				<ProfileLink username={this.props.username} />
+		// 				<ul>
+		// 					{list.map(function(result) {
+		// 						return <li>{result}</li>;
+		// 					})}
+		// 				</ul>
+		// 			</div>
+		// 		);
+		// 	}
+		// });
+
+		// var ProfilePic = React.createClass({
+		// 	render: function() {
+		// 		return (
+		// 			<img src={'https://graph.facebook.com/' + this.props.username + '/picture'} />
+		// 		);
+		// 	}
+		// });
+
+		// var ProfileLink = React.createClass({
+		// 	render: function() {
+		// 		return (
+		// 			<a href={'https://www.facebook.com/' + this.props.username}>
+		// 				{this.props.username}
+		// 			</a>
+		// 		);
+		// 	}
+		// });
+
+		// ReactDOM.render(
+		// 	<Avatar username="pwh" />,
+		// 	document.getElementById('example')
+		// )
+
+		// var Stuff = React.createClass({
+		// 	getInitialState: function() {
+		// 		return {
+		// 			active: false
+		// 		}
+		// 	},
+		// 	toggle: function() {
+		// 		console.log('hello')
+		// 		this.setState({
+		// 			active: !this.state.active
+		// 		})
+		// 	},
+		// 	render: function() {
+		// 		const elementColor = this.state.active ? 'green' : 'red';
+		// 		return (
+		// 			<div>
+		// 				<button onClick={this.toggle} style={{backgroundColor: elementColor}}>{this.props.content}</button>
+		// 			</div>
+		// 		);
+		// 	}
+		// });
+
+		// var greeting = prompt('What would you like the button to say?');
+
+		// ReactDOM.render(
+		// 	<Stuff content={greeting} />,
+		// 	document.getElementById('example')
+		// );
+
+		// var CheckLink = React.createClass({
+		// 	render: function() {
+		// 		return <a {...this.props}>{'> '}{this.props.children}</a>;
+		// 	}
+		// });
+
+		// ReactDOM.render(
+		// 	<CheckLink href="http://google.com">
+		// 		Click Here!
+		// 	</CheckLink>,
+		// 	document.getElementById('example')
+		// );
+
+		// class HelloMessage extends React.Component {
+		// 	render() {
+		// 		return <div>Hello {this.props.name}</div>;
+		// 	}
+		// }
+		// ReactDOM.render(<HelloMessage name="Sebastian" />, document.getElementById('example'));
+
+		// var Counter = React.createClass({
+		// 	render: function() {
+		// 		return (
+		// 			<h1>Your count total is: {this.props.count}</h1>
+		// 		)
+		// 	}
+		// })
+
+		// var Main = React.createClass({
+		// 	getInitialState: function() {
+		// 		return {
+		// 			count: 0
+		// 		}
+		// 	},
+		// 	tick: function(increment) {
+		// 		this.setState({count: this.state.count += increment})
+		// 	},
+		// 	render: function() {
+		// 		return (
+		// 			<div>
+		// 				<Counter count={this.state.count}></Counter>
+		// 				<button onClick={this.tick.bind(this)} increment={-5}>-5</button>
+		// 				<button onClick={this.tick.bind(this)} increment={-1}>-1</button>
+		// 				<button onClick={this.tick.bind(this)} increment={1}>+1</button>
+		// 				<button onClick={this.tick.bind(this)} increment={2}>+2</button>
+		// 				<button onClick={this.tick.bind(this)} increment={5}>+5</button>
+		// 				<button onClick={this.tick.bind(this)} increment={10}>+10</button>
+		// 			</div>
+		// 		)
+		// 	}
+		// });
+
+		// ReactDOM.render(
+		// 	<Main />,
+		// 	document.getElementById('example')
+		// )
+
+		// Code goes here
+
+		/*************************
+		Fixed
+		*************************/
+
+		var PushButton = React.createClass({
+			componentWillMount: function() {
+			},
+		    render: function() {
+		        return (
+		            <button onClick={this.props.onClick} value={this.props.value}>{this.props.incremental}</button>
+		        )
+		    }
+		});
+
+		var Result = React.createClass({
+		    render: function() {
+		        return (
+		            <h1>{this.props.count}</h1>
+		        )
+		    }
+		});
+
+		class ButtonList extends React.Component {
+			render() {
+				let self = this;
+				return (
+					<ul>
+						{this.props.steps.map(function(step) {
+							return (
+								<li key={step.value} ><PushButton onClick={self.props.onClick} value={step.value} incremental={step.incremental} /></li>
+							)
+						})}
+					</ul>
+				)
+			}
+		}
+
+		var Main = React.createClass({
+		    getInitialState: function() {
+	        	return {
+	            	count: 0
+	        	}
+		    },
+		    plusMe: function(event) {
+		        this.setState({count: this.state.count + Number(event.target.value)});
+		    },
+		    render: function() {
+		        return (
+		        	<div>
+		            	<Result count={this.state.count} />
+		            	<ButtonList onClick={this.plusMe} steps={this.props.steps} />
+		            </div>
+		        )
+		    }  
+		});
+
+		let steps = [
+			{
+				value: 1,
+				incremental: '+1'
+			},
+			{
+				value: 2,
+				incremental: '+2'
+			},
+			{
+				value: 5,
+				incremental: '+5'
+			},
+			{
+				value: 10,
+				incremental: '+10'
+			},
+			{
+				value: 37,
+				incremental: '+37'
+			}
+		]
+
+		ReactDOM.render(
+		    <Main steps={steps}/>,
+		    document.getElementById('example')
+		);
+
+		// var names = ['Alice', 'Emily', 'Kate'];
+
+		// ReactDOM.render(
+		// 	<div>
+		// 	{
+		// 		names.map(function(name) {
+		// 			return <p>Hello, {name}!</p>
+		// 		})
+		// 	}
+		// 	</div>,
+		// 	document.getElementById('example')
+		// );
+
+		// var arr = [
+		// 	<h1>Hello, world!</h1>,
+		// 	<h2>React is awesome</h2>
+		// ];
+
+		// ReactDOM.render(
+		// 	<div>{arr}</div>,
+		// 	document.getElementById('example')
+		// );
+
+		// var HelloMessage = React.createClass({
+		// 	render: function() {
+		// 		return <h1>Hello {this.props.name}</h1>;
+		// 	}
+		// });
+
+		// ReactDOM.render(
+		// 	<HelloMessage name="John" />,
+		// 	document.getElementById('example')
+		// )
+
+		// var MyName = React.createClass({
+		// 	render: function() {
+		// 		return (
+		// 			<h1>Hi, my name is {this.props.name}</h1>
+		// 		)
+		// 	}
+		// })
+
+		// ReactDOM.render(
+		// 	<MyName name="Matt" />,
+		// 	document.getElementById('example')
+		// )
+
+		// var NotesList = React.createClass({
+		// 	render: function() {
+		// 		return (
+		// 			<ol>
+		// 			{
+		// 				React.Children.map(this.props.children, function(child) {
+		// 					return <li>{child}</li>;
+		// 				})
+		// 			}
+		// 			</ol>
+		// 		);
+		// 	}
+		// });
+
+		// ReactDOM.render(
+		// 	<NotesList>
+		// 		<span>hello</span>
+		// 		<span>world</span>
+		// 	</NotesList>,
+		// 	document.getElementById('example')
+		// )
+
+		// var MyTitle = React.createClass({
+		// 	getDefaultProps: function() {
+		// 		return {
+		// 			title: 'Harry Potter'
+		// 		}
+		// 	},
+		// 	propTypes: {
+		// 		title: React.PropTypes.string.isRequired
+		// 	},
+		// 	render: function() {
+		// 		return (
+		// 			<h1>{this.props.title}</h1>
+		// 		)
+		// 	}
+		// });
+
+		// var data = 123;
+
+		// ReactDOM.render(
+		// 	<MyTitle title={data} />,
+		// 	document.getElementById('example')
+		// );
+
+		// var MyComponent = React.createClass({
+		// 	handleClick: function() {
+		// 		this.refs.myTextInput.focus();
+		// 	},
+		// 	render: function() {
+		// 		return (
+		// 			<div>
+		// 				<input type="text" ref="myTextInput" />
+		// 				<input type="button" value="Focus the text input" onClick={this.handleClick} />
+		// 			</div>
+		// 		);
+		// 	}
+		// });
+
+		// ReactDOM.render(
+		// 	<MyComponent />,
+		// 	document.getElementById('example')
+		// );
+
+		// var Events = React.creatClass({
+		// 	getInitialState: function() {
+		// 		return {
+
+		// 		}
+		// 	}
+		// })
+
+		// const SetIntervalMixin = {
+		// 	componentWillMount: function() {
+		// 		this.intervals = [];
+		// 	},
+		// 	setInterval: function() {
+		// 		this.intervals.push(setInterval.apply(null, arguments));
+		// 	},
+		// 	componentWillUnmount: function() {
+		// 		this.intervals.forEach(clearInterval);
+		// 	}
+		// };
+
+		// const TickTock = React.createClass({
+		// 	mixins: [SetIntervalMixin],
+		// 	getInitialState: function() {
+		// 		return {seconds: 0};
+		// 	},
+		// 	componentDidMount: function() {
+		// 		this.setInterval(this.tick, 1000);
+		// 	},
+		// 	tick: function() {
+		// 		this.setState({seconds: this.state.seconds + 1});
+		// 	},
+		// 	render: function() {
+		// 		return (
+		// 			<p>
+		// 				React has been running for {this.state.seconds} seconds.
+		// 			</p>
+		// 		)
+		// 	}
+		// });
+
+		// ReactDOM.render(
+		// 	<TickTock />,
+		// 	document.getElementById('example')
+		// )
+
+		/******************************
+		Needs to be fixed
+		******************************/
+
+		// function fetchImages(ComposedComponent, query) {
+		//   var API_URL = 'https://api.shutterstock.com/v2/search' + query;
+		//   var clientId = 'd8d239121ae64da69e00';
+		//   var clientSecret = '3a6bb4feebb7f8efc9ffa317500d26e7e53d064d';
+		//   var Authorization = 'Basic ' + window.btoa(clientId + ':' + clientSecret);
+		//   var ImagesFetched = React.createClass({
+		//     getInitialState() {
+		//       return {images: []}
+		//     },
+		//     componentDidMount() {
+		//       $.ajax({
+		//         url: API_URL,
+		//         data: opts,
+		//         headers: {
+		//           Authorization: authorization
+		//         },
+		//         success: function(response) {
+		//           this.setState({
+		//             images: response
+		//           }.bind(this));
+		//         }
+		//       })
+		//     }
+		//   })
+		//   return ImagesFetched;
+		// }
+
+		// var ComposedComponent = React.createClass({
+		//   render() {
+		//     return <ul>{this.props.images.map(renderImage)}</ul>
+		//   },
+		//   renderImages(image) {
+		//     return (<li><img src="{image.url}"></li>)
+		//   }
+		// });
+
+		// ReactDOM.render(
+		//   <ComposedComponent />,
+		//   document.getElementById('example')
+		// )
+
+		// var rootElement = 
+		// 	React.createElement('div', {},
+		// 		React.createElement('h1', {}, 'Contacts'),
+		// 		React.createElement('ul', {},
+		// 			React.createElement('li', {},
+		// 				React.createElement('h2', {}, "James Nelson"),
+		// 				React.createElement('a', {href: 'mailto:james@jamesknelson.com'},
+		// 					'james@jamesknelson.com')
+		// 				),
+		// 			React.createElement('li', {},
+		// 				React.createElement('h2', {}, 'Joe Citizen'),
+		// 				React.createElement('a', {href: 'mailto:joe@example.com'}, 'joe@example.com')
+		// 				)
+		// 			)
+		// 	)
+		
+		// ReactDOM.render(rootElement, document.getElementById('example'))
+
+		// var contacts = [
+		// 	{key: 1, name: "James Nelson", email: 'james@jamesknelson.com'},
+		// 	{key: 2, name: 'Bob', email: 'bob@bob.com'},
+		// 	{key: 3, name: 'Test', email: 'testtest.com'}
+		// ]
+
+		// function emailValidate(word) {
+		// 	var doesExist = false;
+		// 	word = word.split('');
+		// 	word.forEach(function(currentLetter) {
+		// 		currentLetter === '@' ? doesExist = true : false;
+		// 	})
+		// 	return doesExist;
+		// }
+
+		// var listElements = contacts
+		// 	.filter(function(contact) { return contact.email && contact.name.length >= 4 && emailValidate(contact.email); })
+		// 	.map(function(contact) {
+		// 		return React.createElement('li', {key: contact.key},
+		// 			React.createElement('h2', {}, contact.name),
+		// 			React.createElement('a', {href: 'mailto:' + contact.email}, contact.email)
+		// 		)
+		// 	})
+
+		// var rootElement = 
+		// 	React.createElement('div', {},
+		// 		React.createElement('h1', {}, 'Contacts'),
+		// 		React.createElement('ul', {}, listElements)
+		// 	)
+
+		// ReactDOM.render(rootElement, document.getElementById('example'))
+
+		// var ContactItem = React.createClass({
+		// 	propTypes: {
+		// 		name: React.PropTypes.string.isRequired
+		// 	},
+		// 	unmount: function() {
+		// 		var node = ReactDOM.findDOMNode(this);
+		// 		ReactDOM.unmountComponentAtNode(node);
+		// 		$(node).remove();
+		// 	},
+		// 	handleClick: function() {
+		// 		this.unmount();
+		// 	},
+		// 	render: function() {
+		// 		return (
+		// 			React.createElement('li', {className: 'Contact', onClick: this.handleClick},
+		// 				React.createElement('h2', {className: 'Contact-name'}, this.props.name)
+		// 			)
+		// 		)
+		// 	}
+		// });
+
+		// var ContactList = React.createClass({
+		// 	render: function() {
+		// 		return (
+		// 			<ul>
+		// 			{this.props.names.map(function(item) {
+		// 				return <ContactItem key={item.key} name={item.name} />
+		// 			})}
+		// 			</ul>
+		// 		)
+		// 	}
+		// });
+
+		// var names = [
+		// 	{
+		// 		key: 1,
+		// 		name: 'Jim-Bob'
+		// 	},
+		// 	{
+		// 		key: 2,
+		// 		name: 'Billy-Joe'
+		// 	},
+		// 	{
+		// 		key: 3,
+		// 		name: 'Scooter'
+		// 	}
+		// ]
+
+		// ReactDOM.render(
+		// 	<ContactList names={names} />,
+		// 	document.getElementById('example')
+		// )
+
+	</script>
+</body>
+</html>
